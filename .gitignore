@@ -1,0 +1,29 @@
+# Environment files (NEVER commit these!)
+.env
+.env.local
+.env*.local
+config/.env.local
+config/.env.db.local
+config/.env.server.local
+config/.env.email.local
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.vite/
+.next/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

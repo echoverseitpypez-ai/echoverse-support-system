@@ -1,0 +1,5 @@
+key,value
+app_name,Echoverse Support
+timezone,UTC
+smtp_host,smtp.example.com
+smtp_port,587
