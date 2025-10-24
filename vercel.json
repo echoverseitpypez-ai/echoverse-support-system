@@ -8,11 +8,11 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://echoverse-support-system.onrender.com/api/:path*"
+      "destination": "https://echoverse-support-system-mkxe.onrender.com/api/:path*"
     },
     {
       "source": "/auth/:path*",
-      "destination": "https://echoverse-support-system.onrender.com/auth/:path*"
+      "destination": "https://echoverse-support-system-mkxe.onrender.com/auth/:path*"
     },
     {
       "source": "/(.*)",
