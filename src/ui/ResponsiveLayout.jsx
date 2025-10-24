@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { supabase } from '../supabaseClient.js'
 import { clearServerSession } from '../utils/sessionValidator.js'
 import { useUserRole } from '../hooks/useUserRole.js'
-import MobileNavigation from '../components/MobileNavigation.jsx'
 
 // SVG Icons
 const Icons = {
@@ -85,19 +84,6 @@ export default function ResponsiveLayout({ children }) {
   const [userProfile, setUserProfile] = useState(null)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [adminViewExpanded, setAdminViewExpanded] = useState(pathname.startsWith('/admin'))
-  const [isMobile, setIsMobile] = useState(false)
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-
-  // Check if device is mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
-    
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   // Update admin view expansion based on current route
   useEffect(() => {
@@ -142,15 +128,7 @@ export default function ResponsiveLayout({ children }) {
   }
 
   const toggleSidebar = () => {
-    if (isMobile) {
-      setMobileNavOpen(!mobileNavOpen)
-    } else {
-      setSidebarCollapsed(!sidebarCollapsed)
-    }
-  }
-
-  const closeMobileNav = () => {
-    setMobileNavOpen(false)
+    setSidebarCollapsed(!sidebarCollapsed)
   }
 
   // Breadcrumb generation
@@ -186,17 +164,8 @@ export default function ResponsiveLayout({ children }) {
     <div className={`app ${sidebarCollapsed ? 'collapsed' : ''} fade-in`} style={hideNav ? { display: 'block' } : undefined}>
       {!hideNav && (
         <>
-          {/* Mobile Navigation */}
-          {isMobile && (
-            <MobileNavigation 
-              isOpen={mobileNavOpen} 
-              onClose={closeMobileNav}
-            />
-          )}
-
           {/* Desktop Sidebar */}
-          {!isMobile && (
-            <aside className="sidebar">
+          <aside className="sidebar">
               <div className="sidebar-header">
                 <div className="brand">Echoverse Support</div>
                 <p className="card-subtitle">Dual‑Portal Ticketing</p>
@@ -293,15 +262,14 @@ export default function ResponsiveLayout({ children }) {
                   </div>
                 </div>
               </nav>
-            </aside>
-          )}
+          </aside>
         </>
       )}
       
       {!hideNav && (
         <header className="topbar">
           <div className="topbar-left">
-            <button className="mobile-nav-toggle" onClick={toggleSidebar}>
+            <button className="sidebar-toggle" onClick={toggleSidebar} title="Toggle Sidebar">
               <Icons.Menu />
             </button>
             <div className="breadcrumb">

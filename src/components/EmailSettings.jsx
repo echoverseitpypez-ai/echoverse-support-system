@@ -57,7 +57,7 @@ export default function EmailSettings() {
     setLoading(true)
     setTestStatus('Sending test email...')
     try {
-      const result = await api('/email/test', {
+      const result = await api('/settings/email/test', {
         method: 'POST',
         body: JSON.stringify({ email: testEmail })
       })

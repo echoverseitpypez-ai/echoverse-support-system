@@ -1,53 +1,17 @@
-# EchoVerse IT Support System
+# Enhanced Ticket Support System
 
-A comprehensive, enterprise-grade support and management system built with React 19, Node.js, Express, and Supabase. Features real-time updates, advanced analytics, class scheduling, team collaboration, file attachments, SLA tracking, and much more.
-
-**Version:** 2.1.0  
-**Last Updated:** October 23, 2025  
-**Status:** ✅ Production Ready
+A comprehensive, modern ticket support system built with React, Node.js, Express, and Supabase. Features real-time updates, advanced analytics, file attachments, SLA tracking, and much more.
 
 ## 🚀 Features
 
-### Core Support System
+### Core Features
 - **Authentication & Authorization**: Multi-role support (Admin, Agent, Teacher, User)
-- **Ticket Management**: Create, update, assign, and track tickets with full lifecycle management
-- **Real-time Updates**: WebSocket integration for live notifications and presence
-- **File Attachments**: Upload and manage ticket attachments (10MB limit)
-- **Advanced Analytics**: Comprehensive dashboards with performance metrics
+- **Ticket Management**: Create, update, assign, and track tickets
+- **Real-time Updates**: WebSocket integration for live notifications
+- **File Attachments**: Upload and manage ticket attachments
+- **Advanced Analytics**: Comprehensive dashboards and reporting
 - **SLA Tracking**: Automated SLA monitoring and breach notifications
 - **Bulk Operations**: Update multiple tickets simultaneously
-
-### 🎓 Class Schedule System (NEW)
-- **Academic Terms Management**: Semester/term organization (Fall 2025, Spring 2026)
-- **Course Catalog**: Subject management with codes (CS101, MATH201)
-- **Class Schedules**: Weekly recurring classes with time/location
-- **Student Enrollments**: Track class registrations and capacity
-- **Attendance Tracking**: Mark present/absent/late per session
-- **Class Announcements**: Class-specific notifications
-- **Office Hours**: Teacher availability schedules
-- **Dual Timezone Support**: KST (Korean) and PH (Philippines) time display
-- **Real-time Countdown**: Next class countdown timer on dashboard
-
-### 💬 Team Collaboration
-- **Team Chat**: Real-time team messaging with WebSocket
-- **Public Team Chat**: Open communication channels
-- **File Sharing**: Share files within chat conversations
-- **Typing Indicators**: See when team members are typing
-- **Online Presence**: Real-time user status tracking
-
-### 📊 Enhanced Dashboards
-- **Teacher Dashboard**: 
-  - Today's schedule with countdown timer
-  - Quick notes widget with local persistence
-  - Dual timezone display (KST/PH)
-  - Ticket statistics and management
-  - Class schedule integration
-- **Admin Dashboard**:
-  - System-wide analytics and metrics
-  - User management interface
-  - Email settings configuration
-  - Department and team management
-  - Bulk operations panel
 
 ### Advanced Features
 - **Priority & Category Management**: Flexible ticket categorization
@@ -57,35 +21,27 @@ A comprehensive, enterprise-grade support and management system built with React
 - **Rate Limiting**: Built-in API rate limiting for security
 - **Input Validation**: Comprehensive validation with Zod schemas
 - **Responsive Design**: Modern, mobile-first UI design
-- **Email Notifications**: Configurable email alerts for ticket updates
-- **Session Management**: Server restart detection and handling
 
 ## 🏗️ Architecture
 
 ### Backend Stack
-- **Node.js 18+** with **Express.js** - REST API server
-- **Socket.io 4.8+** - Real-time WebSocket communication
-- **Supabase 2.45+** - Database, authentication, and storage
-- **Zod 3.23+** - Runtime type validation and schema validation
-- **Multer** - File upload handling with size limits
-- **Express Rate Limit** - API rate limiting for security
-- **Nodemailer** - Email notification system
-- **CORS** - Configurable cross-origin resource sharing
+- **Node.js** with **Express.js** - REST API server
+- **Socket.io** - Real-time WebSocket communication
+- **Supabase** - Database and authentication
+- **Zod** - Runtime type validation
+- **Multer** - File upload handling
+- **Express Rate Limit** - API rate limiting
 
 ### Frontend Stack
-- **React 19.2** - Modern user interface with latest features
-- **React Router 6.27** - Client-side routing and navigation
-- **Vite 5.4** - Lightning-fast build tool and dev server
-- **Modern CSS** - Custom styling with CSS Grid/Flexbox and CSS variables
-- **Custom Hooks** - Reusable logic for performance monitoring and data fetching
+- **React 19** - User interface
+- **React Router** - Client-side routing
+- **Vite** - Fast build tool and dev server
+- **Modern CSS** - Custom styling with CSS Grid/Flexbox
 
 ### Database
 - **PostgreSQL** (via Supabase) with comprehensive schema
 - **Row Level Security (RLS)** for data protection
 - **Automatic timestamps** and audit trails
-- **20+ Indexes** for optimized query performance
-- **Views and Functions** for complex queries
-- **Real-time Subscriptions** support
 
 ## 📁 Project Structure
 
@@ -98,70 +54,28 @@ A comprehensive, enterprise-grade support and management system built with React
 │   └── README.md           # Config documentation
 ├── src/                     # Frontend React application
 │   ├── components/         # Reusable React components
-│   │   ├── ClassScheduleExample.jsx
-│   │   ├── EmailSettings.jsx
-│   │   ├── ErrorBoundary.jsx
-│   │   └── TicketChat.jsx
 │   ├── pages/              # Page components
-│   │   ├── EnhancedAdminDashboard.jsx
-│   │   ├── TeacherDashboard.jsx
-│   │   ├── Schedule.jsx
-│   │   ├── TeamChat.jsx
-│   │   ├── PublicTeamChat.jsx
-│   │   └── Login.jsx
 │   ├── hooks/              # Custom React hooks
-│   │   ├── usePerformance.js
-│   │   └── useWebSocket.js
 │   ├── utils/              # Utility functions
-│   │   ├── logger.js       # Centralized logging
-│   │   └── sessionValidator.js
-│   ├── config/             # Frontend configuration
-│   │   └── constants.js    # Application constants
 │   └── styles/             # CSS styles
 ├── server/                  # Backend Express server
 │   ├── routes/             # API routes
-│   │   ├── tickets.js
-│   │   ├── users.js
-│   │   ├── analytics.js
-│   │   ├── attachments.js
-│   │   ├── email.js
-│   │   ├── settings.js
-│   │   └── teachers.js
 │   ├── middleware/         # Express middleware
-│   │   └── security.js     # Rate limiting & sanitization
-│   ├── services/           # Business logic
-│   │   └── emailService.js
-│   ├── websocket.js        # WebSocket server
-│   └── index.js            # Main server file
+│   └── services/           # Business logic
 ├── scripts/                 # Utility scripts
-│   ├── setup/              # Setup scripts
-│   ├── create-admin.js     # Admin user creation
-│   ├── manage-teachers.js  # Teacher management
-│   └── run-sql.js          # Database setup
+│   └── setup/              # Setup and configuration scripts
 ├── tests/                   # Test files
-├── db/                      # Database schemas
-│   ├── enhanced_schema.sql
-│   ├── class_schedule_schema.sql
-│   ├── team_chat_schema.sql
-│   └── chat_schema.sql
-├── docs/                    # Comprehensive documentation
-│   ├── CLASS_SCHEDULE_SETUP.md
-│   ├── CLASS_SCHEDULE_QUICKSTART.md
-│   ├── email/              # Email setup guides
-│   ├── chat/               # Chat system docs
-│   ├── features/           # Feature documentation
-│   └── deployment/         # Deployment guides
+├── db/                      # Database schemas and migrations
+├── docs/                    # Documentation
 └── public/                  # Static assets
 ```
 
 ## 📦 Installation
 
 ### Prerequisites
-- **Node.js 18+** (LTS recommended)
-- **npm 9+** or **yarn 1.22+**
-- **Supabase account** (free tier works)
-- **Git** (for version control)
-- **Modern browser** (Chrome, Firefox, Safari, Edge)
+- Node.js 18+ 
+- npm or yarn
+- Supabase account
 
 ### Environment Setup
 
@@ -210,13 +124,7 @@ Run the enhanced database schema:
 npm run db:setup
 ```
 
-Or manually execute the SQL files in your Supabase SQL Editor:
-- `db/enhanced_schema.sql` - Core ticket system
-- `db/class_schedule_schema.sql` - Class scheduling system
-- `db/team_chat_schema.sql` - Team chat functionality
-- `db/chat_schema.sql` - Additional chat features
-
-**Note:** See `docs/CLASS_SCHEDULE_SETUP.md` for detailed class schedule setup instructions.
+Or manually execute `db/enhanced_schema.sql` in your Supabase SQL editor.
 
 5. **Create Admin User**
 ```bash
@@ -227,19 +135,13 @@ npm run admin:create
 
 ### Development Mode
 ```bash
-# Run both client and server concurrently
+# Run both client and server
 npm run dev
 
 # Or run separately
-npm run react:client  # Client on http://localhost:3000
-npm run dev:server    # Server on http://localhost:3001
+npm run dev:client  # Client on http://localhost:3000
+npm run dev:server  # Server on http://localhost:3001
 ```
-
-**Access Points:**
-- Frontend: `http://localhost:3000`
-- Backend API: `http://localhost:3001/api`
-- WebSocket: `ws://localhost:3001`
-- Network Access: `http://<your-ip>:3000` (LAN devices)
 
 ### Production Mode
 ```bash
@@ -461,22 +363,6 @@ files: [File objects]
 - **user_permissions** - Granular permissions
 - **kb_articles** - Knowledge base articles
 
-### Class Schedule Tables (8 tables)
-- **academic_terms** - Semester/term management
-- **subjects** - Course catalog
-- **class_schedules** - Weekly class schedules
-- **class_enrollments** - Student registrations
-- **class_sessions** - Individual class meetings
-- **attendance_records** - Attendance tracking
-- **class_announcements** - Class notifications
-- **office_hours** - Teacher availability
-
-### Chat System Tables
-- **team_chat_messages** - Team chat messages
-- **team_chat_participants** - Chat participants
-- **chat_rooms** - Chat room management
-- **chat_files** - Shared files in chat
-
 ## 🧪 Testing
 
 ### Running Tests
@@ -565,18 +451,7 @@ For support and questions:
 
 ## 🔄 Version History
 
-### v2.1.0 (Current - October 2025)
-- ✅ **Class Schedule System** - Complete academic scheduling with 8 tables
-- ✅ **Team Chat** - Real-time team collaboration with file sharing
-- ✅ **Enhanced Teacher Dashboard** - Today's schedule, countdown timer, quick notes
-- ✅ **Dual Timezone Support** - KST and PH time display
-- ✅ **Code Quality Improvements** - Centralized logging, constants, security fixes
-- ✅ **Session Management** - Server restart detection
-- ✅ **Email Notifications** - Configurable email alerts
-- ✅ **Performance Monitoring** - Custom hooks for performance tracking
-- ✅ **Security Enhancements** - Environment validation, request limits, CORS hardening
-
-### v2.0.0 (Enhanced Version - September 2025)
+### v2.0.0 (Enhanced Version)
 - ✅ Advanced analytics and dashboards
 - ✅ Real-time WebSocket communication  
 - ✅ File attachment system
@@ -591,126 +466,3 @@ For support and questions:
 - User authentication
 - Simple dashboard
 - Basic role management
-
-## 📚 Additional Documentation
-
-For detailed information on specific features:
-
-### Class Schedule System
-- 📖 **Setup Guide**: `docs/CLASS_SCHEDULE_SETUP.md`
-- 🚀 **Quick Start**: `docs/CLASS_SCHEDULE_QUICKSTART.md`
-- 📋 **Overview**: `README_CLASS_SCHEDULE.md`
-- 🎯 **Deployment**: `CLASS_SCHEDULE_DEPLOYMENT.md`
-
-### Recent Improvements
-- 📝 **Changes Applied**: `CHANGES_APPLIED.md` - Code review fixes
-- 🎯 **Action Plan**: `ACTION_PLAN.md` - Development roadmap
-- 🔧 **Fixes Summary**: `FIXES_SUMMARY.md` - Path and configuration fixes
-- 📊 **Dashboard Enhancements**: `DASHBOARD_ENHANCEMENTS.md`
-
-### Email System
-- 📧 **Email Setup**: `docs/email/SETUP_EMAIL_NOTIFICATIONS.md`
-- ⚙️ **Admin Settings**: `docs/email/EMAIL_ADMIN_SETTINGS.md`
-- 🧪 **Testing**: `docs/email/test-email-integration.md`
-
-### Chat System
-- 💬 **Team Chat**: `docs/chat/TEAM_CHAT_DEBUG.md`
-- 🔧 **Troubleshooting**: `docs/features/REALTIME_TROUBLESHOOTING.md`
-
-## 🛠️ Code Quality & Maintenance
-
-### Recent Code Improvements (October 2025)
-- ✅ **Centralized Logging**: `src/utils/logger.js` - Environment-aware logging
-- ✅ **Application Constants**: `src/config/constants.js` - No more magic numbers
-- ✅ **Environment Validation**: Server startup checks for required variables
-- ✅ **Request Size Limits**: 10MB limit to prevent DOS attacks
-- ✅ **CORS Hardening**: Production-ready CORS configuration
-- ✅ **Console Log Cleanup**: Replaced 69+ console.log statements
-- ✅ **Path Organization**: All config files in `config/` directory
-
-### Remaining Console Logs
-The following files still contain console.log statements (69 total):
-- `src/pages/EnhancedAdminDashboard.jsx` - 24 statements
-- `src/pages/PublicTeamChat.jsx` - 15 statements
-- `src/pages/TeamChat.jsx` - 12 statements
-- `src/utils/performanceTest.js` - 11 statements (intentional for testing)
-- `src/pages/Schedule.jsx` - 2 statements
-- `server/` files - 16 statements (mostly error logging)
-
-**Note**: Server console.logs are intentional for production logging.
-
-## 🔐 Security Best Practices
-
-### Implemented Security Measures
-- ✅ Environment variable validation on startup
-- ✅ Request size limits (10MB)
-- ✅ Rate limiting on all API endpoints
-- ✅ Input sanitization and validation
-- ✅ Row Level Security (RLS) on database
-- ✅ JWT token authentication
-- ✅ CORS configuration for production
-- ✅ File type and size validation
-- ✅ Audit logging for all actions
-
-### Configuration Files
-All sensitive configuration files are in the `config/` directory and gitignored:
-- `config/.env.local`
-- `config/.env.server.local`
-- `config/.env.db.local`
-- `config/.env.email.local`
-
-## 🧪 Available Scripts
-
-```bash
-# Development
-npm run dev              # Run both client and server
-npm run react:client     # Run only React client
-npm run dev:server       # Run only Express server
-
-# Production
-npm run build            # Build for production
-npm start                # Start production server
-npm run preview          # Preview production build
-
-# Database
-npm run db:setup         # Setup database schema
-npm run supabase:ping    # Test Supabase connection
-
-# User Management
-npm run admin:create     # Create admin user
-npm run manage:teachers  # Manage teacher accounts
-npm run migrate:teacher-role  # Migrate teacher roles
-```
-
-## 🌐 Network Access
-
-The application is configured for LAN access:
-- Server listens on `0.0.0.0` (all network interfaces)
-- Vite dev server has `host: true` for network exposure
-- CORS allows development origins by default
-- Network IP displayed on server startup
-
-**Access from other devices:**
-```
-http://<your-computer-ip>:3000
-```
-
-## 📊 Performance Features
-
-- **Code Splitting**: React Router lazy loading
-- **Optimized Re-renders**: React.memo and useMemo
-- **Database Indexes**: 20+ indexes for fast queries
-- **Connection Pooling**: Via Supabase
-- **Response Caching**: For analytics endpoints
-- **Pagination**: All list endpoints support pagination
-- **WebSocket**: Efficient real-time updates
-
-## 🎨 UI/UX Features
-
-- **Responsive Design**: Mobile-first approach
-- **Dark Mode Ready**: CSS variables for theming
-- **Loading States**: Skeleton screens and spinners
-- **Error Boundaries**: Graceful error handling
-- **Toast Notifications**: User feedback for actions
-- **Keyboard Shortcuts**: Ctrl+Enter for quick actions
-- **Accessibility**: ARIA labels and semantic HTML
